@@ -458,4 +458,9 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
 
 
 if __name__ == "__main__":
-    cli_evaluate()
+    try:
+        cli_evaluate()
+    except Exception as e:
+        import wandb
+        wandb.finish(exit_code=1)
+        raise e
